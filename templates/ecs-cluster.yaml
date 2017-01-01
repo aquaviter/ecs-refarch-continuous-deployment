@@ -87,7 +87,7 @@ Resources:
       VPCZoneIdentifier: !Ref Subnets
       LaunchConfigurationName: !Ref LaunchConfiguration
       MinSize: !Ref ClusterSize
-      MaxSize: !Ref ClusterSize + 1
+      MaxSize: 4
       DesiredCapacity: !Ref ClusterSize
       Tags: 
         - Key: Name
