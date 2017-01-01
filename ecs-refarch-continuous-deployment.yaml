@@ -11,7 +11,7 @@ Parameters:
 
   GitHubRepo:
     Type: String
-    Default: ecs-demo-php-simple-app
+    Default: ecs-demo-nodejs-simple-app
     Description: The repo name of the sample service.
 
   GitHubBranch:
@@ -50,7 +50,8 @@ Resources:
   Cluster:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ecs-refarch-continuous-deployment/templates/ecs-cluster.yaml
+      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/ecs-cluster.yaml
+        
       Parameters:
         SourceSecurityGroup: !GetAtt LoadBalancer.Outputs.SecurityGroup
         Subnets: !GetAtt VPC.Outputs.Subnets
@@ -59,7 +60,7 @@ Resources:
   DeploymentPipeline:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ecs-refarch-continuous-deployment/templates/deployment-pipeline.yaml
+      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/deployment-pipeline.yaml
       Parameters:
         Cluster: !GetAtt Cluster.Outputs.ClusterName
         GitHubUser: !Ref GitHubUser
@@ -74,7 +75,7 @@ Resources:
   LoadBalancer:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ecs-refarch-continuous-deployment/templates/load-balancer.yaml
+      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/load-balancer.yaml
       Parameters:
         Subnets: !GetAtt VPC.Outputs.Subnets
         VpcId: !GetAtt VPC.Outputs.VpcId
@@ -82,7 +83,7 @@ Resources:
   Service:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ecs-refarch-continuous-deployment/templates/service.yaml
+      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/service.yaml
       Parameters:
         Cluster: !GetAtt Cluster.Outputs.ClusterName
         TargetGroup: !GetAtt LoadBalancer.Outputs.TargetGroup
@@ -90,7 +91,7 @@ Resources:
   VPC:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ecs-refarch-continuous-deployment/templates/vpc.yaml
+      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/vpc.yaml
       Parameters:
         Name: !Ref AWS::StackName
         VpcCIDR: 10.215.0.0/16

@@ -1,11 +1,11 @@
 Parameters:
   InstanceType:
     Type: String
-    Default: t2.large
+    Default: t2.micro
 
   ClusterSize:
     Type: Number
-    Default: 1
+    Default: 2
 
   Subnets:
     Type: List<AWS::EC2::Subnet::Id>
@@ -87,7 +87,7 @@ Resources:
       VPCZoneIdentifier: !Ref Subnets
       LaunchConfigurationName: !Ref LaunchConfiguration
       MinSize: !Ref ClusterSize
-      MaxSize: !Ref ClusterSize
+      MaxSize: !Ref ClusterSize + 1
       DesiredCapacity: !Ref ClusterSize
       Tags: 
         - Key: Name
