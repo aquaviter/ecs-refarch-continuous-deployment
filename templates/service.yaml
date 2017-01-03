@@ -5,7 +5,7 @@ Parameters:
 
   DesiredCount:
     Type: Number
-    Default: 0
+    Default: 2
 
   TargetGroup:
     Type: String

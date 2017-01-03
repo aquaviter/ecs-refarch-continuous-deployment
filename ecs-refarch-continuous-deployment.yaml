@@ -50,7 +50,7 @@ Resources:
   Cluster:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/ecs-cluster.yaml
+      TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/ecs-cluster.yaml
         
       Parameters:
         SourceSecurityGroup: !GetAtt LoadBalancer.Outputs.SecurityGroup
@@ -60,7 +60,7 @@ Resources:
   DeploymentPipeline:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/deployment-pipeline.yaml
+      TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/deployment-pipeline.yaml
       Parameters:
         Cluster: !GetAtt Cluster.Outputs.ClusterName
         GitHubUser: !Ref GitHubUser
@@ -70,12 +70,12 @@ Resources:
         TargetGroup: !GetAtt LoadBalancer.Outputs.TargetGroup
         Repository: !GetAtt Service.Outputs.Repository
         StackName: !GetAtt Service.Outputs.StackName
-        TemplateBucket: ecs-refarch-continuous-deployment
+        TemplateBucket: ecs-hands-on-jp
 
   LoadBalancer:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/load-balancer.yaml
+      TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/load-balancer.yaml
       Parameters:
         Subnets: !GetAtt VPC.Outputs.Subnets
         VpcId: !GetAtt VPC.Outputs.VpcId
@@ -83,7 +83,7 @@ Resources:
   Service:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/service.yaml
+      TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/service.yaml
       Parameters:
         Cluster: !GetAtt Cluster.Outputs.ClusterName
         TargetGroup: !GetAtt LoadBalancer.Outputs.TargetGroup
@@ -91,7 +91,7 @@ Resources:
   VPC:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3-ap-northeast-1.amazonaws.com/ecs-hands-on-hideyy/templates/vpc.yaml
+      TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/vpc.yaml
       Parameters:
         Name: !Ref AWS::StackName
         VpcCIDR: 10.215.0.0/16
