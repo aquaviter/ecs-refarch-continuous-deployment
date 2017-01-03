@@ -1,6 +1,6 @@
 # ECS Reference Architecture: Continuous Deployment
 
-This is the CloudFormation Templates for ECS Hands-On forked from [![ECS Reference Architecture](https://github.com/awslabs/ecs-refarch-continuous-deployment)
+This is the CloudFormation Templates for ECS Hands-On forked from [ECS Reference Architecture](https://github.com/awslabs/ecs-refarch-continuous-deployment)
 
 #### Launch Cloudformation Stack from HereCreate the CloudFormation stack
 
