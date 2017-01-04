@@ -89,7 +89,7 @@ Resources:
       MinSize: !Ref ClusterSize
       MaxSize: 4
       DesiredCapacity: !Ref ClusterSize
-      Tags: 
+      Tags:
         - Key: Name
           Value: !Sub ${AWS::StackName} - ECS Host
           PropagateAtLaunch: true

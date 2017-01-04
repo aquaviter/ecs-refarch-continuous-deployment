@@ -39,27 +39,27 @@ Resources:
     Type: AWS::ECR::Repository
     DeletionPolicy: Retain
 
-  Service-simple-app:
+  ServiceSimpleApp:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Ref Cluster
       Role: !Ref ECSServiceRole
       DesiredCount: !Ref SimpleAppDesiredCount
-      TaskDefinition: !Ref TaskDefinition-simple-app
+      TaskDefinition: !Ref TaskDefinitionSimpleApp
       LoadBalancers:
         - ContainerName: simple-app
           ContainerPort: 8080
           TargetGroupArn: !Ref TargetGroup
 
-  Service-load-test:
+  ServiceLoadTest:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Ref Cluster
       Role: !Ref ECSServiceRole
       DesiredCount: !Ref AbAgentDesiredCount
-      TaskDefinition: !Ref TaskDefinition-ab-agent
+      TaskDefinition: !Ref TaskDefinitionLoadTest
 
-  TaskDefinition-simple-app:
+  TaskDefinitionSimpleApp:
     Type: AWS::ECS::TaskDefinition
     Properties:
       Family: !Sub ${AWS::StackName}-simple-app
@@ -74,7 +74,7 @@ Resources:
             - Name: Tag
               Value: !Ref Tag
 
-  TaskDefinition-load-test:
+  TaskDefinitionLoadTest:
     Type: AWS::ECS::TaskDefinition
     Properties:
       Family: !Sub ${AWS::StackName}-load-test
