@@ -51,7 +51,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: https://s3.amazonaws.com/ecs-hands-on-jp/templates/ecs-cluster.yaml
-        
+
       Parameters:
         SourceSecurityGroup: !GetAtt LoadBalancer.Outputs.SecurityGroup
         Subnets: !GetAtt VPC.Outputs.Subnets
