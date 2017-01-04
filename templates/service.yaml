@@ -56,7 +56,7 @@ Resources:
     Properties:
       Cluster: !Ref Cluster
       Role: !Ref ECSServiceRole
-      DesiredCount: !Ref AbAgentDesiredCount
+      DesiredCount: !Ref LoadTestDesiredCount
       TaskDefinition: !Ref TaskDefinitionLoadTest
 
   TaskDefinitionSimpleApp:
