@@ -11,7 +11,7 @@ Parameters:
 
   GitHubRepo:
     Type: String
-    Default: ecs-demo-nodejs-simple-app
+    Default: ecs-demo-simple-restfulapi
     Description: The repo name of the sample service.
 
   GitHubBranch:

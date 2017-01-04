@@ -39,39 +39,31 @@ Resources:
     Type: AWS::ECR::Repository
     DeletionPolicy: Retain
 
-  ServiceSimpleApp:
+  Service:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Ref Cluster
       Role: !Ref ECSServiceRole
       DesiredCount: !Ref SimpleAppDesiredCount
-      TaskDefinition: !Ref TaskDefinitionSimpleApp
+      TaskDefinition: !Ref TaskDefinitionSimpleAPI
       LoadBalancers:
-        - ContainerName: simple-app
+        - ContainerName: simple-api
           ContainerPort: 8080
           TargetGroupArn: !Ref TargetGroup
-
-  ServiceLoadTest:
-    Type: AWS::ECS::Service
-    Properties:
-      Cluster: !Ref Cluster
-      Role: !Ref ECSServiceRole
-      DesiredCount: !Ref LoadTestDesiredCount
-      TaskDefinition: !Ref TaskDefinitionLoadTest
 
   TaskDefinitionSimpleApp:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: !Sub ${AWS::StackName}-simple-app
+      Family: !Sub ${AWS::StackName}-simple-api
       ContainerDefinitions:
-        - Name: simple-app
+        - Name: simple-api
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}
           Essential: true
           Memory: 128
           PortMappings:
             - ContainerPort: 8080
           Environment:
-            - Name: Tag
+            - Name: Tags
               Value: !Ref Tag
 
   TaskDefinitionLoadTest:
