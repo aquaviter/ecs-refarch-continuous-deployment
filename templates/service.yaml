@@ -51,7 +51,7 @@ Resources:
           ContainerPort: 8080
           TargetGroupArn: !Ref TargetGroup
 
-  TaskDefinitionSimpleApp:
+  TaskDefinitionSimpleAPI:
     Type: AWS::ECS::TaskDefinition
     Properties:
       Family: !Sub ${AWS::StackName}-simple-api
