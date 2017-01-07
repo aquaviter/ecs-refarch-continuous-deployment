@@ -48,7 +48,6 @@ Metadata:
           - GitHubUser
           - GitHubToken
 
-
 Resources:
   Cluster:
     Type: AWS::CloudFormation::Stack
@@ -59,6 +58,7 @@ Resources:
         SourceSecurityGroup: !GetAtt LoadBalancer.Outputs.SecurityGroup
         Subnets: !GetAtt VPC.Outputs.Subnets
         VpcId: !GetAtt VPC.Outputs.VpcId
+        KeyName: !Ref KeyName
 
   DeploymentPipeline:
     Type: AWS::CloudFormation::Stack
