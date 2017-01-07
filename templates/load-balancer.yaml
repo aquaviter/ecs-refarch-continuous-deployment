@@ -73,7 +73,7 @@ Outputs:
 
   ServiceUrl:
     Description: URL of the load balancer for the sample service.
-    Value: !Sub http://${LoadBalancer.DNSName}
+    Value: !Sub http://${LoadBalancer.DNSName}/api
 
   SecurityGroup:
     Value: !Ref SecurityGroup

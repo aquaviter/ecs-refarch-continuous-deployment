@@ -24,6 +24,9 @@ Parameters:
     Description: >
       Token for the user specified above. (https://github.com/settings/tokens)
 
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: KeyPair to login to ECS Cluster instance.
 
 Metadata:
   AWS::CloudFormation::Interface:

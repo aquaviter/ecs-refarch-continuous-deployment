@@ -16,6 +16,8 @@ Parameters:
   VpcId:
     Type: AWS::EC2::VPC::Id
 
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
 
 Mappings:
   AWSRegionToAMI:
